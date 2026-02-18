@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+recursos
+src/logfile.log
+src/utils/settings.json
+out

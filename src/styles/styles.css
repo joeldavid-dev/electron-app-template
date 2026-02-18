@@ -1,0 +1,538 @@
+/*
+ * Estilo global de la aplicación. 
+ *
+ * El objetivo de este archivo es estilizar los elementos
+ * mas básicos que se usan en multiples vistas. De esta
+ * forma, todos estos elementos tendrán el mismo diseño y
+ * mantendrán coherencia visual y estética, sin necesidad
+ * repetir código de CSS.
+ */
+
+
+/* Carga de tipografías personalizadas. */
+@font-face {
+    font-family: Varela;
+    src: url(../assets/fonts/VarelaRound-Regular.ttf);
+}
+
+@font-face {
+    font-family: IBM_plex_mono;
+    src: url(../assets/fonts/IBMPlexMono-Regular.ttf);
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url(../assets/fonts/NunitoSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: major_mono;
+    src: url(../assets/fonts/MajorMonoDisplay-Regular.ttf);
+}
+
+@font-face {
+    font-family: oswald;
+    src: url(../assets/fonts/Oswald-Bold.ttf);
+}
+
+@font-face {
+    font-family: inter;
+    src: url(../assets/fonts/Inter-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: source_code;
+    src: url(../assets/fonts/SourceCodePro-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: jetBrains_mono;
+    src: url(../assets/fonts/JetBrainsMono-VariableFont_wght.ttf);
+}
+
+/* Desactiva el scroll bar. */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Reinicia el diseño de la página. */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+/* Definición de constantes */
+:root {
+    --app_light: rgb(245, 245, 245);
+    --app_light_transparent: rgba(245, 245, 245, 0.6);
+    --app_dark: rgb(10, 10, 10);
+    --app_dark_transparent: rgba(10, 10, 10, 0.6);
+    --neutral_grey: rgb(130, 130, 130);
+    --light_gray: rgba(0, 0, 0, 0.15);
+    --light_gray_hover: rgba(0, 0, 0, 0.20);
+    --dark_gray: rgba(255, 255, 255, 0.15);
+    --dark_gray_hover: rgba(255, 255, 255, 0.20);
+    --warning_red: rgb(150, 0, 0);
+
+    --app_contrast_light: rgb(200, 200, 200);
+    --app_contrast_dark: rgb(55, 55, 55);
+
+    /* Tiempos de animación */
+    --fast-animation: 0.2s;
+    --normal-animation: 0.3s;
+
+    /* Valores de margen y padding */
+    --maximal-margin: 60px;
+    --extra-big-margin: 45px;
+    --big-margin: 30px;
+    --normal-margin: 15px;
+    --narrow-margin: 10px;
+    --minimal-margin: 5px;
+    --transparent-btn-margin: 4px;
+    --nano-margin: 2px;
+
+    /* Valores de redondeo */
+    --minimal-radius: 6px;
+    --normal-radius: 11px;
+    --maximal-radius: 16px;
+    --ultra-radius: 30px;
+
+    /* Redondeo exterior de un contenedor con margen minimo y elemento hijo minimo. */
+    --external-radius: calc(var(--minimal-radius) + var(--minimal-margin));
+    /* Redondeo exterior de un contenedor con margen estrecho y elemento hijo minimo. */
+    --external-radius-2: calc(var(--minimal-radius) + var(--narrow-margin));
+    /* Redondeo exterior de un contenedor con margen normal y elemento hijo minimo. */
+    --external-radius-3: calc(var(--minimal-radius) + var(--normal-margin));
+    /* Redondeo exterior de un contenedor con margen nano y elemento hijo normal. */
+    --external-radius-4: calc(var(--normal-radius) + var(--nano-margin));
+}
+
+/* Permite arrastrar la app */
+.draggable {
+    -webkit-app-region: drag;
+}
+
+.no-draggable {
+    -webkit-app-region: no-drag;
+}
+
+/* Estilos generales para la aplicación web en modo claro */
+body {
+    font-family: Nunito, sans-serif;
+    font-size: 16px;
+    background: var(--app_light);
+    color: var(--app_dark);
+    user-select: none;
+}
+
+button {
+    color: var(--app_dark);
+    /* Permite hacer clic en los botones sobre una area draggable*/
+    -webkit-app-region: no-drag;
+}
+
+input {
+    -webkit-app-region: no-drag;
+}
+
+/* Estilos primitivos que se repiten. */
+h1 {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+.expresive-text {
+    font-family: jetBrains_mono;
+    font-size: 38px;
+    font-style: bold;
+}
+
+.minimum-text {
+    font-size: 10px;
+}
+
+.small-text {
+    font-size: 12px;
+}
+
+.medium-text {
+    font-size: 14px;
+}
+
+.large-text {
+    font-size: 18px;
+}
+
+.mayus {
+    text-transform: uppercase;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.left-text {
+    text-align: left;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.selectable-text {
+    /* Permite seleccionar el texto */
+    user-select: text;
+    cursor: text;
+}
+
+.no-wrapped-text {
+    /* Evita que el texto se divida en varias líneas */
+    white-space: nowrap;
+}
+
+/* Oculta el texto desbordado */
+.overflow-hidden {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Permite que el texto se ajuste al contenedor */
+.wrapped-text {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Preserva los saltos de línea y espacios en blanco */
+pre,
+.preserve {
+    white-space: pre-wrap;
+    /* respeta saltos de línea y espacios */
+    word-wrap: break-word;
+    /* hace que no se desborde en pantallas pequeñas */
+}
+
+/* Elementos circulares */
+.circular {
+    border-radius: 50%;
+}
+
+/* Redondeo de elementos con borde circular */
+.ultra-rounded {
+    border-radius: var(--ultra-radius);
+}
+
+/* Redondeo de elementos grandes */
+.maximal-rounded {
+    border-radius: var(--maximal-radius);
+}
+
+/* Redondeo de elementos medianos*/
+.normal-rounded {
+    border-radius: var(--normal-radius);
+}
+
+/* Redondeo de elementos pequeños*/
+.minimal-rounded {
+    border-radius: var(--minimal-radius);
+}
+
+.external-radius {
+    border-radius: var(--external-radius);
+}
+
+.external-radius-2 {
+    border-radius: var(--external-radius-2);
+}
+
+.external-radius-3 {
+    border-radius: var(--external-radius-3);
+}
+
+.external-radius-4 {
+    border-radius: var(--external-radius-4);
+}
+
+.vertical-auto-margin {
+    margin: auto 0 auto 0;
+}
+
+.top-bottom-big-margin {
+    margin: 50px 0 50px 0;
+}
+
+.normal-margin {
+    margin: var(--normal-margin);
+}
+
+.narrow-margin {
+    margin: var(--narrow-margin);
+}
+
+.minimal-margin {
+    margin: var(--minimal-margin);
+}
+
+.minimal-margin-left-right {
+    margin: 0 var(--minimal-margin);
+}
+
+.nano-margin {
+    margin: var(--nano-margin);
+}
+
+.normal-padding {
+    padding: var(--normal-margin);
+}
+
+.narrow-padding {
+    padding: var(--narrow-margin);
+}
+
+.minimal-padding {
+    padding: var(--minimal-margin);
+}
+
+.transparent-btn-padding {
+    padding: var(--transparent-btn-margin);
+}
+
+.nano-padding {
+    padding: var(--nano-margin);
+}
+
+.btn-padding {
+    padding: var(--minimal-margin) var(--normal-margin);
+}
+
+.narrow-btn-padding {
+    padding: var(--nano-margin) var(--normal-margin);
+}
+
+.big-btn-padding {
+    padding: var(--narrow-margin) var(--maximal-margin);
+}
+
+.login-padding {
+    padding: var(--normal-margin) var(--big-margin) var(--big-margin) var(--big-margin);
+}
+
+.invisible {
+    display: none;
+}
+
+.horizontal-elem-area {
+    display: flex;
+    flex-direction: row;
+    /* Espacio entre elementos */
+    gap: var(--narrow-margin);
+}
+
+.vertical-elem-area {
+    display: flex;
+    flex-direction: column;
+    /* Espacio entre elementos */
+    gap: var(--narrow-margin);
+}
+
+.vertical-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.horizontal-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.centered {
+    align-items: center;
+}
+
+.centered-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 60dvh;
+}
+
+.extra-big-spaced {
+    gap: var(--extra-big-margin);
+}
+
+.big-spaced {
+    gap: var(--big-margin);
+}
+
+.normal-spaced {
+    gap: var(--normal-margin);
+}
+
+.minimal-spaced {
+    gap: var(--minimal-margin);
+}
+
+.reverse {
+    justify-content: flex-end;
+    /* Alinea los botones a la derecha */
+}
+
+.spaced {
+    justify-content: space-between;
+}
+
+.distributed {
+    justify-content: space-evenly;
+}
+
+.expanded {
+    /* Permite que el elemento ocupe todo el espacio disponible */
+    flex-grow: 1;
+}
+
+.contracted {
+    /* Permite que el elemento ocupe el espacio mínimo necesario */
+    flex: initial;
+}
+
+.min-content {
+    height: min-content;
+    width: min-content;
+}
+
+.max-content {
+    height: max-content;
+    width: max-content;
+}
+
+.always-front {
+    /* Asegura que el elemento esté siempre al frente */
+    z-index: 1000;
+}
+
+/* ======================= Elementos complejos ======================= */
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background: black;
+    animation: blink 1s infinite;
+    margin-left: 4px;
+}
+
+/* Botón transparente para elementos que están sobre un fondo sólido o colorido.
+No tiene borde, al pasar el mouse por encima solo aparece el borde. */
+.transparent-btn {
+    width: min-content;
+    height: min-content;
+    background: transparent;
+    transition: var(--normal-animation);
+    cursor: pointer;
+    /* Hacer que el botón ocupe el espacio mínimo necesario */
+    display: flex;
+    align-items: center;
+}
+
+.transparent-btn:hover {
+    background-color: var(--light_gray);
+    transition-duration: 0s;
+}
+
+.big-icon {
+    width: 70px;
+    height: 70px;
+}
+
+.normal-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.mini-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.scrolleable {
+    /* Hace que el contenido sea scrolleable */
+    overflow-y: auto;
+}
+
+/* Tamaño general del scrollbar */
+.scrolleable::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: transparent;
+}
+
+/* La barrita que se mueve */
+.scrolleable::-webkit-scrollbar-thumb {
+    background: var(--neutral_grey);
+    border-radius: 2px;
+}
+
+/* Hover */
+.scrolleable::-webkit-scrollbar-thumb:hover {
+    background: var(--app_contrast_dark);
+}
+
+/* Fondo del scrollbar */
+.scrolleable::-webkit-scrollbar-track {
+    background: transparent;
+    margin: calc(var(--minimal-radius) + var(--narrow-margin));
+}
+
+.no-scrolleable {
+    overflow: hidden;
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .hide-in-small {
+        display: none;
+    }
+}
+
+/* Animaciones */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Estilos específicos para modo oscuro */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--app_dark);
+        color: var(--app_light);
+    }
+
+    button {
+        color: var(--app_light);
+    }
+
+    .transparent-btn:hover {
+        background-color: var(--dark_gray);
+    }
+
+    .cursor {
+        background: var(--app_light);
+    }
+
+    .darkmode-invert {
+        filter: invert(1);
+    }
+}

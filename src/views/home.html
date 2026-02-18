@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self';
+    style-src 'self';
+    font-src 'self';
+    img-src 'self' data:;
+    object-src 'none';
+    base-uri 'none';
+    ">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script type="module" src="../renderer/homeRenderer.js"></script>
+    <title>Electron App Template</title>
+</head>
+
+<body>
+    <div>
+        <div class="horizontal-flex reverse normal-padding draggable">
+            <button id="close" class="transparent-btn transparent-btn-padding minimal-rounded">
+                <img src="../assets/ico/feather/x-circle.svg" class="normal-icon darkmode-invert">
+            </button>
+        </div>
+
+        <div class="centered-content">
+            <div class="horizontal-flex">
+                <p id="hello-world" class="expresive-text centered-text"></p>
+                <span class="cursor"></span>
+            </div>
+        </div>
+        <p class="small-text centered-text">//:)</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+{
+  "name": "electron-template",
+  "version": "0.0.0",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "publish": "electron-builder --publish always",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.electron.template",
+    "productName": "Electron Template",
+    "directories": {
+      "output": "out"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png",
+      "category": "Utility",
+      "executableName": "Electron Template",
+      "synopsis": "Secure local data storage"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": false,
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "uninstallDisplayName": "Electron Template",
+      "license": "LICENSE",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "joeldavid-dev",
+        "repo": "electron-app-template"
+      }
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "**/*.node",
+      "**/*.dll",
+      "**/ffmpeg*",
+      "**/ffmpeg-static/**"
+    ]
+  },
+  "keywords": [],
+  "author": "Joel David C.",
+  "license": "MIT",
+  "description": "Electron Template",
+  "devDependencies": {
+    "@electron/packager": "18.3.6",
+    "electron": "39.0.0",
+    "electron-builder": "26.0.12",
+    "standard": "17.1.0"
+  },
+  "eslintConfig": {
+    "extends": "standard"
+  },
+  "dependencies": {
+    "electron-updater": "6.6.2"
+  }
+}

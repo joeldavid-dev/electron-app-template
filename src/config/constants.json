@@ -1,0 +1,32 @@
+{
+    "about": {
+        "appName": "Electron Template",
+        "brand": "Codaby",
+        "version": "0.0.0",
+        "versionName": "Cero",
+        "developer": "Joel David C.",
+        "year": "2026"
+    },
+    "languages": [
+        {
+            "code": "system",
+            "name": "System Default"
+        },
+        {
+            "code": "en",
+            "name": "English"
+        },
+        {
+            "code": "es",
+            "name": "Español"
+        },
+        {
+            "code": "ko",
+            "name": "한국어"
+        }
+    ],
+    "icons": {
+        "author": "Cole Bemis",
+        "url": "https://colebemis.com/"
+    }
+}
